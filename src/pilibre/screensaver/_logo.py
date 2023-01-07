@@ -1,3 +1,4 @@
+from rich.align import Align
 from rich.highlighter import RegexHighlighter
 from rich.text import Text
 
@@ -33,10 +34,15 @@ class _LogoHighlighter(RegexHighlighter):
 def construct_logo(logo: list[str]) -> Text:
 
     shadow_highlighter = _LogoHighlighter()
+
+    # Color logo text, line by line. Highlight shadow characters
     painted_logo = _paint_lines(logo)
     highlighted_logo = shadow_highlighter(painted_logo)
 
-    return highlighted_logo
+    # Center logo in console, with padding
+    aligned_logo = Align(highlighted_logo, align="center", vertical="middle")
+
+    return aligned_logo
 
 
 LOGO = construct_logo(LOGO_UNFORMATTED)
