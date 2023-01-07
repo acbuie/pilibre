@@ -30,7 +30,7 @@ class _LogoHighlighter(RegexHighlighter):
     highlights = [r"(?P<shadow>[╔╗╚╝═║])"]
 
 
-def construct_logo(logo: str = LOGO_UNFORMATTED) -> Text:
+def construct_logo(logo: list[str]) -> Text:
 
     shadow_highlighter = _LogoHighlighter()
     painted_logo = _paint_lines(logo)
