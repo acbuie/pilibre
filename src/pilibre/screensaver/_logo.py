@@ -21,7 +21,7 @@ LINE_COLORS = [
     theme.styles["logo.darker"],
     "",
 ]
-SHADOW_COLOR = "#3c3836"
+SHADOW_COLOR = theme.styles["logo.shadow"]
 
 
 def _paint_lines(logo: list[str]) -> Text:
