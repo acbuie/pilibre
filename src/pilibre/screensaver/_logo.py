@@ -25,6 +25,15 @@ SHADOW_COLOR = "#3c3836"
 
 
 def _paint_lines(logo: list[str]) -> Text:
+    """Apply a style to each line in the PiLibre logo.
+
+    Args:
+        logo (list[str]): PiLibre logo.
+
+    Returns:
+        Text: Colored logo.
+    """
+
     text_logo = Text()
     for i, line in enumerate(logo):
         painted_line = Text.assemble((line, f"{LINE_COLORS[i]}"), "\n")
@@ -34,7 +43,19 @@ def _paint_lines(logo: list[str]) -> Text:
 
 
 def construct_logo(logo: list[str]) -> Text:
-    # Color logo text, line by line. Highlight shadow characters
+    """Colorize the PiLibre logo.
+
+    This applies `_paint_lines`, which also colors the shadow
+    characters. Calls `Text.highlight_regex` after to correctly color
+    the shadow characters.
+
+    Args:
+        logo (list[str]): PiLibre logo.
+
+    Returns:
+        Text: Finalized, colored logo.
+    """
+
     painted_logo = _paint_lines(logo)
     painted_logo.highlight_regex(r"(?P<shadow>[╔╗╚╝═║])", style=SHADOW_COLOR)
 
