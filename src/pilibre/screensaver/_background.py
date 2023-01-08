@@ -6,8 +6,7 @@ from pilibre._theme import theme
 
 
 def _replace_single_char(text: Text, char: str, index: int) -> Text:
-    """
-    Replaces a single character in a `Text` object, at the index.
+    """Replaces a single character in a `Text` object, at the index.
 
     Note that this will work with strings, too. In the context of this
     application, I will only be passing `Text`, to keep color or other
@@ -18,7 +17,7 @@ def _replace_single_char(text: Text, char: str, index: int) -> Text:
         char (str): Character to replace.
         index (int): Index at which to replace.
 
-    Returns:
+    Returns
         Text: Original text with the character replaced.
     """
     return text[:index] + char + text[index + 1 :]
@@ -31,7 +30,8 @@ def _check_if_empty_char(text: Text, index: int) -> bool:
         text (Text): Text to check within.
         index (int): Index at which to check for a space character.
 
-    Returns:
+    Returns
+    -------
         bool: True, if the character is a space character.
     """
     text_as_string = text.plain
@@ -47,10 +47,10 @@ def _replace_random_spaces(text: Text, char: str, num: int) -> Text:
         char (str): Character to replace with.
         num (int): Number of replacements to perform.
 
-    Returns:
+    Returns
+    -------
         Text: Text
     """
-
     i = 0
     while i < num:
         index = random.randint(0, len(text) - 1)
@@ -72,10 +72,10 @@ def construct_screensaver(foreground: Text, width: int) -> Text:
         foreground (Text): Foreground text.
         width (int): Maximum line width.
 
-    Returns:
+    Returns
+    -------
         Text: Starry background, as Text.
     """
-
     new_line = Text("\n")
     lines = []
 

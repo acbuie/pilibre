@@ -18,7 +18,6 @@ def format_datetime_title(timezone: str) -> Text:
     Returns:
         Text: Formatted date and local time.
     """
-
     try:
         tz = ZoneInfo(timezone)
     except ZoneInfoNotFoundError:

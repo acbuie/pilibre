@@ -33,7 +33,6 @@ def _paint_lines(logo: list[str]) -> Text:
     Returns:
         Text: Colored logo.
     """
-
     text_logo = Text()
     for i, line in enumerate(logo):
         painted_line = Text.assemble((line, f"{LINE_COLORS[i]}"), "\n")
@@ -55,7 +54,6 @@ def construct_logo(logo: list[str]) -> Text:
     Returns:
         Text: Finalized, colored logo.
     """
-
     painted_logo = _paint_lines(logo)
     painted_logo.highlight_regex(r"(?P<shadow>[╔╗╚╝═║])", style=SHADOW_COLOR)
 

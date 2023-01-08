@@ -82,7 +82,6 @@ def align_logo(logo: Text, width: int, height: int) -> Text:
     Returns:
         Text: Centered logo.
     """
-
     horizontal = _center_horizontally(logo, width)
     vertical = _center_vertically(horizontal, width, height)
 

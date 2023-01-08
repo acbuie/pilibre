@@ -1,3 +1,5 @@
+"""Functions to create the PiLibre screensaver."""
+
 import time
 
 from rich.console import Console
@@ -23,7 +25,6 @@ def create_screen(logo: Text, console: Console) -> Layout:
     Returns:
         Layout: Screensaver to display.
     """
-
     date_time = format_datetime_title("America/Denver")
 
     aligned_logo = align_logo(logo, console.width, console.height)
