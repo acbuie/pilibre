@@ -9,8 +9,10 @@
 </div>
 
 <div align="center">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/acbuie/pilibre?style=social">
-    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/aidan_buie?style=social">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/acbuie/pilibre?style=for-the-badge">
+    <a href="https://github.com/acbuie">
+        <img alt="GitHub Profile" src="https://img.shields.io/static/v1?label=&message=Profile&style=for-the-badge&logo=github&labelColor=grey">
+    </a>
 </div>
 
 A small Python script for displaying hardware metrics. Metrics are pulled from `LibreHardwareMonitor`, and requires it to be installed on your PC and in server mode. It is designed to be run on a small computer with a small display. I intend to use a Raspberry Pi, but you could likely use something else.
