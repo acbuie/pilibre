@@ -31,7 +31,6 @@ def _check_if_empty_char(text: Text, index: int) -> bool:
         index (int): Index at which to check for a space character.
 
     Returns
-    -------
         bool: True, if the character is a space character.
     """
     text_as_string = text.plain
@@ -48,7 +47,6 @@ def _replace_random_spaces(text: Text, char: str, num: int) -> Text:
         num (int): Number of replacements to perform.
 
     Returns
-    -------
         Text: Text
     """
     i = 0
@@ -73,7 +71,6 @@ def construct_screensaver(foreground: Text, width: int) -> Text:
         width (int): Maximum line width.
 
     Returns
-    -------
         Text: Starry background, as Text.
     """
     new_line = Text("\n")
