@@ -1,6 +1,8 @@
 [tool.poetry]
 name = "pilibre"
 version = "0.1.0"
+homepage = "https://github.com/acbuie/pilibre"
+repository = "https://github.com/acbuie/pilibre"
 description = "Display hardware metrics from LibreHardwareMonitor, intended to be run on a small screen on a RaspberryPi."
 authors = ["acbuie <aidancbuie@gmail.com>"]
 readme = "README.md"
