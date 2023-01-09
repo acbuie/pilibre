@@ -5,6 +5,18 @@ description = "Display hardware metrics from LibreHardwareMonitor, intended to b
 authors = ["acbuie <aidancbuie@gmail.com>"]
 readme = "README.md"
 license = "MIT"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: System :: Hardware",
+    "Topic :: System :: Monitoring",
+    "Topic :: Terminals",
+    "Typing :: Typed"
+]
 packages = [{include = "pilibre", from = "src"}]
 
 [tool.poetry.dependencies]
