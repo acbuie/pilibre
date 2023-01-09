@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="PiLibre" src="docs/assets/logo.svg"/>
+  <img alt="PiLibre" src="https://github.com/acbuie/pilibre/blob/main/docs/assets/logo.svg"/>
 </p>
 
 <div align="center">
@@ -7,6 +7,8 @@
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pilibre?style=for-the-badge">
     <img alt="GitHub" src="https://img.shields.io/github/license/acbuie/pilibre?style=for-the-badge">
 </div>
+
+<br/>
 
 <div align="center">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/acbuie/pilibre?style=for-the-badge">
