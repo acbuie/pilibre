@@ -9,7 +9,7 @@ theme = Theme(
         "logo.darker": "#8d836a",
         "logo.shadow": "#3c3836",
         "star.near": "#ebdbb2",
-        "star.hallow": "#ebdbb2",
+        "star.hollow": "#ebdbb2",
         "star.yellow": "yellow",
         "star.blue": "blue",
         "star.far": "#8d836a",

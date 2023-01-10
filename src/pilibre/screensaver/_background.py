@@ -94,6 +94,6 @@ def construct_screensaver(foreground: Text, width: int) -> Text:
     background.highlight_words("✷", style=theme.styles["star.yellow"])
     background.highlight_words("∙", style=theme.styles["star.blue"])
     background.highlight_words("✦", style=theme.styles["star.near"])
-    background.highlight_words("✧", style=theme.styles["star.hallow"])
+    background.highlight_words("✧", style=theme.styles["star.hollow"])
 
     return background
