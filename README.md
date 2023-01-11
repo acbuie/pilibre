@@ -134,4 +134,25 @@ Running the program depends on how it was installed.
 
 ### Theming
 
+#### Colors
+
+Colors can also be defined in the config. `Rich` is used to parse the colors, so any string that can be parsed by `Color.parse()` is valid.
+
+Valid colors formats are like so:
+
+- rgb: `"rgb(0, 0, 0)"`
+- hex: `"#ffffff"`
+- ansi: `"white"`
+- 16 or 255: `"color(0)"`
+
+> **A note about non-truecolor definitions**
+> In order to support a variety of color definitions, each color type is converted into RGB. RGB colors are defined as `TRUECOLOR` when passed back into `Rich`, even if the RGB directly corresponds to a standard terminal 255 color. If you use `Rich.Color.parse` in your own projects, you may realize that it respects your terminal theme when passed ANSI or a standard-255 color.
+> `PiLibre` is unable to do this, because it needs colors in the RGB format for color blending (which get turned into `TRUECOLOR`). This means, if you'd like to define colors in a non RGB or hex format, but want to respect the terminal theme, you'll have to manually define your terminal theme in `pilibre.toml`. Sorry!
+
+#### Terminal Theme
+
+This only needs to be set if you define your colors with ANSI or a standard-255 color definition, as these will not respect your terminal theme (they will in `Rich`, but won't in `PiLibre`). You can read why above, in [Colors](#colors).
+
+The definition is simple, and has 4 parts: background, foreground, normal, and bright. They are all defined with `TRUECOLOR` from `Rich`, so RGB or hex color definitions are necessary here.
+
 ### Layouts
