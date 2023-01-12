@@ -53,5 +53,5 @@ strict = true
 line-length = 88
 select = ["D", "E", "F", "I001", "N"]
 # Google docstring style
-ignore = ["D203", "D204", "D213", "D215", "D400", "D404", "D406", "D407", "D408", "D409", "D413"]
-unfixable = ["F401"]
+ignore = ["D105", "D107", "D203", "D204", "D213", "D215", "D400", "D404", "D406", "D407", "D408", "D409", "D413"]
+unfixable = ["F401", "F841"]
