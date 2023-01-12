@@ -4,7 +4,7 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import Literal
 
-from rich.terminal_theme import TerminalTheme
+from rich.terminal_theme import DEFAULT_TERMINAL_THEME, TerminalTheme
 
 from pilibre._color import color_to_rgb
 
@@ -55,9 +55,9 @@ def terminal_theme_from_file(file: Path) -> TerminalTheme:
     standard = [*dict(config["standard"]).values()]
     bright = [*dict(config["bright"]).values()]
 
-    basic_rgb = [color_to_rgb(rgb) for rgb in basic]
-    standard_rgb = [color_to_rgb(rgb) for rgb in standard]
-    bright_rgb = [color_to_rgb(rgb) for rgb in bright]
+    basic_rgb = [color_to_rgb(rgb, DEFAULT_TERMINAL_THEME) for rgb in basic]
+    standard_rgb = [color_to_rgb(rgb, DEFAULT_TERMINAL_THEME) for rgb in standard]
+    bright_rgb = [color_to_rgb(rgb, DEFAULT_TERMINAL_THEME) for rgb in bright]
 
     theme = TerminalTheme(
         basic_rgb[0],
@@ -67,3 +67,35 @@ def terminal_theme_from_file(file: Path) -> TerminalTheme:
     )
 
     return theme
+
+
+def set_builtin_terminal_theme(theme_name: str) -> TerminalTheme:
+    """Set the terminal theme.
+
+    Optional, only needed if user wants ANSI colors to respect their
+    terminal theme.
+
+    Args:
+        theme_name (str): Theme name. Must match one of the builtin
+        `theme_name.theme` files.
+
+    Returns:
+        TerminalTheme: Terminal theme.
+    """
+    builtin_theme_paths = find_built_in_themes("terminal")
+
+    selected_theme_path = [
+        theme if theme.stem == theme_name else None for theme in builtin_theme_paths
+    ]
+
+    selected_theme = selected_theme_path[0]
+
+    if not selected_theme:
+        return DEFAULT_TERMINAL_THEME
+
+    terminal_theme = terminal_theme_from_file(selected_theme)
+
+    return terminal_theme
+
+
+TERMINAL_THEME = set_builtin_terminal_theme("gruvbox")
