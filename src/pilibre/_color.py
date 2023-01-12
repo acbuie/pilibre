@@ -1,24 +1,17 @@
-from typing import Optional
-
 from rich.color import Color
-from rich.terminal_theme import DEFAULT_TERMINAL_THEME, TerminalTheme
+from rich.terminal_theme import TerminalTheme
 
 
-def color_to_rgb(
-    color: str, theme: Optional[TerminalTheme] = None
-) -> tuple[int, int, int]:
+def color_to_rgb(color: str, theme: TerminalTheme) -> tuple[int, int, int]:
     """Convert a color to its RGB triplet.
 
     Args:
         color (str): Color string. Passed to `Rich.Color.parse()`.
-        theme (TerminalTheme, optional): Terminal theme. Defaults to
-        None.
+        theme (TerminalTheme): Terminal theme.
 
     Returns:
         tuple[int, int, int]: RGB triplet, as a tuple.
     """
-    theme = DEFAULT_TERMINAL_THEME if None else theme
-
     rich_color = Color.parse(color)
     true_color = rich_color.get_truecolor(theme=theme)
 
@@ -49,29 +42,20 @@ def _linear_gradient(
     Returns:
         list[tuple[int, int, int]]: List of interpolated colors.
     """
-    # Initilize a list of the output colors with the starting color
     interpolated_rgbs = [start_rgb]
-    # Calcuate a color at each evenly spaced value of t from 1 to n
-    for t in range(1, n):
-        # Interpolate RGB vector for color at the current value of t
 
+    for t in range(1, n):
         r = int(start_rgb[0] + (float(t) / (n - 1)) * (end_rgb[0] - start_rgb[0]))
         g = int(start_rgb[1] + (float(t) / (n - 1)) * (end_rgb[1] - start_rgb[1]))
         b = int(start_rgb[2] + (float(t) / (n - 1)) * (end_rgb[2] - start_rgb[2]))
 
-        # curr_vector = [
-        #     int(start_rgb[j] + (float(t) / (n - 1)) * (end_rgb[j] - start_rgb[j]))
-        #     for j in range(3)
-        # ]
-
-        # Add it to our list of output colors
         interpolated_rgbs.append((r, g, b))
 
     return interpolated_rgbs
 
 
 def color_bar_colors(
-    start_color: str, end_color: str, width: int, theme: Optional[TerminalTheme] = None
+    start_color: str, end_color: str, width: int, theme: TerminalTheme
 ) -> list[str]:
     """Create a color gradient (in hex) between two colors.
 
@@ -83,7 +67,7 @@ def color_bar_colors(
         end_color (str): Color gradient ending color.
         width (int): Width of the gradient (effectively the terminal
         width)
-        theme (TerminalTheme, optional): Terminal theme.
+        theme (TerminalTheme): Terminal theme.
 
     Returns:
         list[str]: Color gradient, in hex format.
