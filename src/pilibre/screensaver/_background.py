@@ -63,7 +63,7 @@ def _replace_random_spaces(text: Text, char: str, num: int) -> Text:
     return text
 
 
-def construct_screensaver(foreground: Text, width: int) -> Text:
+def construct_stars(foreground: Text, width: int) -> Text:
     """Constructs the starry background text for the screensaver.
 
     Args:

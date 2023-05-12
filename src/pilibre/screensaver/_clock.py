@@ -3,35 +3,71 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from rich.text import Text
 
+from pilibre.screensaver.text.clock import construct_time
+from pilibre.screensaver.text.colorize import construct_text
 
-def format_datetime_title(timezone: str) -> Text:
-    """Format the simple clock title.
 
-    If `timezone` is not found in the IANA database
-    (see: https://docs.python.org/3/library/zoneinfo.html and
-    https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), the
-    function returns 'Invalid timezone' as `Text`.
+class Clock:
+    def __init__(self, timezone: str) -> None:
+        try:
+            self.timezone = ZoneInfo(timezone)
+        except ZoneInfoNotFoundError:
+            # TODO: Log
+            self.timezone = ZoneInfo("Ect/UTC")
 
-    Args:
-        timezone (str): Local timezone.
+        # Instantiate current local time
+        self.update()
 
-    Returns:
-        Text: Formatted date and local time.
-    """
-    try:
-        tz = ZoneInfo(timezone)
-    except ZoneInfoNotFoundError:
-        clock = Text()
-        clock.append("Invalid timezone.", style="red")
-        return clock
+    def update(self) -> None:
+        dt = datetime.now(self.timezone)
 
-    dt = datetime.now(tz)
+        self.date = dt.strftime("%A, %B %d")
+        self.time = dt.strftime("%H:%M")
 
-    time = dt.strftime("%H:%M")
-    date = dt.strftime("%A, %B %d | ")
+    @property
+    def clock_title(self) -> Text:
+        """Return the current date and time as `Text`.
 
-    clock = Text()
-    clock.append(date, style="white")
-    clock.append(time, style="white")
+        If `timezone` is not found in the IANA database
+        (see: https://docs.python.org/3/library/zoneinfo.html and
+        https://en.wikipedia.org/wiki/List_of_tz_database_time_zones),
+        then UTM is used.
 
-    return clock
+        Returns:
+            Text: Formatted date and time.
+        """
+        clock_title = Text()
+
+        clock_title.append(self.date, style="white")
+        clock_title.append(" | ", style="white")
+        clock_title.append(self.time, style="white")
+
+        if not self.timezone:
+            clock_title.append(" UTC", style="red")
+            return clock_title
+
+        return clock_title
+
+    @property
+    def date_title(self) -> Text:
+        """Return the current date as `Text`.
+
+        Returns:
+            Text: Formatted date.
+        """
+        date_title = Text()
+        date_title.append(self.date, style="white")
+
+        return date_title
+
+    def as_text(self) -> Text:
+        """Return the clock as `Text`.
+
+        Returns:
+            Text: Formatted clock.
+        """
+        clock_chars = list(self.time)
+        clock = construct_time(clock_chars)
+        colored_clock = construct_text(clock)
+
+        return colored_clock

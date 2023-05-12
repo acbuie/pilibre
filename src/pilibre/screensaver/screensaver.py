@@ -9,31 +9,30 @@ from rich.panel import Panel
 from rich.text import Text
 
 from pilibre.console import console
-from pilibre.screensaver._background import construct_screensaver
-from pilibre.screensaver._center import align_logo
-from pilibre.screensaver._clock import format_datetime_title
-from pilibre.screensaver._logo import LOGO
+from pilibre.screensaver._background import construct_stars
+from pilibre.screensaver._center import align_text
+from pilibre.screensaver._clock import Clock
 
 
-def create_screen(logo: Text, console: Console) -> Layout:
+def create_screen(text: Text, console: Console) -> Layout:
     """Creates a static screensaver.
 
     Args:
-        logo (Text): Text to display.
+        text (Text): Text to display.
         console (Console): Console instance.
 
     Returns:
         Layout: Screensaver to display.
     """
-    date_time = format_datetime_title("America/Denver")
+    clock = Clock("America/Denver")  # TODO: pull automatically?
 
-    aligned_logo = align_logo(logo, console.width, console.height)
-    stars = construct_screensaver(aligned_logo, console.width)
+    aligned_text = align_text(text, console.width, console.height)
+    stars = construct_stars(aligned_text, console.width)
 
     screen = Layout(
         Panel(
             stars,
-            title=date_time,
+            title=clock.date_title,
             title_align="left",
             border_style="black",
         )
@@ -51,7 +50,10 @@ def run_screensaver(seconds: int) -> None:
     Returns:
         None
     """
-    with Live(create_screen(LOGO, console), refresh_per_second=4) as live:
+    clock = Clock("America/Denver")
+
+    with Live(create_screen(clock.as_text(), console), refresh_per_second=4) as live:
         for _ in range(seconds):
-            time.sleep(1)
-            live.update(create_screen(LOGO, console))
+            time.sleep(5)
+            clock.update()
+            live.update(create_screen(clock.as_text(), console))
