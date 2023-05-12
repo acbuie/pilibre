@@ -1,0 +1,78 @@
+[time]
+timezone = "UTC"
+
+[connection]
+ip = "192.168.#.#"
+port = "8085" # default port
+
+[screensaver]
+show = true
+background_refresh = 5 # in seconds
+screen_off = 10 # in minutes
+
+[screensaver.star]
+near = "✦"
+far = "⋆"
+hollow = "✧"
+colored_1 = "✷"
+colored_2 = "∙"
+
+[display]
+layout = "none"
+theme = "none"
+terminal_theme = "none"
+
+# [display.user]
+# layout = "path/to/user/layout"
+# theme = "path/to/user/theme"
+# terminal_theme = "path/to/user/terminal_theme"
+
+# [colors]
+# borders = "white"
+# text = "white"
+
+# [colors.meter]
+# low = "green"
+# high = "red"
+
+# [colors.graph]
+# low = "magenta"
+# high = "yellow"
+
+# [colors.screensaver.logo]
+# lighter = "#ebdbb2"
+# light = "#d3c5a0"
+# neutral = "#bcaf8e"
+# dark = "#a4997c"
+# darker = "#8d836a"
+
+# [colors.screensaver.star]
+# near = "#ebdbb2"
+# far = "#8d836a"
+# hollow = "#ebdbb2"
+# colored_1 = "yellow"
+# colored_2 = "blue"
+
+# [colors.terminal]
+# background = ""
+# foreground = ""
+# normal = [
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+# ]
+# bright = [
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+#     "",
+# ]

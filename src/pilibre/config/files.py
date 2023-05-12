@@ -39,6 +39,8 @@ def find_config() -> Path:
     if dot_config_file := _get_config_file(dot_config):
         configs.append(dot_config_file)
 
+    # TODO: default config if no user config found
+
     if not configs:
         raise FileNotFoundError("No configuration file found.")
 
