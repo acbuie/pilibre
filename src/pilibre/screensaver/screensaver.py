@@ -15,7 +15,7 @@ from pilibre.screensaver._clock import Clock
 
 
 def create_screen(text: Text, console: Console) -> Layout:
-    """Creates a static screensaver.
+    """Create a static screensaver.
 
     Args:
         text (Text): Text to display.
@@ -35,6 +35,8 @@ def create_screen(text: Text, console: Console) -> Layout:
             title=clock.date_title,
             title_align="left",
             border_style="black",
+            height=console.height,
+            width=console.width,
         )
     )
 
@@ -42,7 +44,7 @@ def create_screen(text: Text, console: Console) -> Layout:
 
 
 def run_screensaver(seconds: int) -> None:
-    """Runs the screensaver, for the supplied amount of seconds.
+    """Run the screensaver, for the supplied amount of seconds.
 
     Args:
         seconds (int): Time to run screensaver, in seconds.

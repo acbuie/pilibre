@@ -92,6 +92,8 @@ NUMBERS = {
     ],
 }
 
+# TODO: Add AM and PM characters
+
 
 def construct_time(characters: list[str]) -> list[str]:
     """Creates an ASCiI clock from an input of numbers.
